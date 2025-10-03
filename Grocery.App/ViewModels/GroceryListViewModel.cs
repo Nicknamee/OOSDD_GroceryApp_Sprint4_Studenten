@@ -33,15 +33,6 @@ namespace Grocery.App.ViewModels
             await Shell.Current.GoToAsync($"{nameof(Views.GroceryListItemsView)}?Titel={groceryList.Name}", true, paramater);
         }
 
-        [RelayCommand]
-        public async Task ShowBoughtProducts()
-        {
-            if (_global.Client?.Role == Role.Admin)
-            {
-                await Shell.Current.GoToAsync(nameof(Views.BoughtProductsView));
-            }
-        }
-
         public override void OnAppearing()
         {
             base.OnAppearing();
@@ -57,7 +48,7 @@ namespace Grocery.App.ViewModels
         }
 
         [RelayCommand]
-        private async Task ShowBoughtProducts()
+        public async Task ShowBoughtProducts()
         {
             if (Client?.Role != Role.Admin)
             {
