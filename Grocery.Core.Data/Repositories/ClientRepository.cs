@@ -1,3 +1,4 @@
+﻿
 using Grocery.Core.Enums;
 using Grocery.Core.Interfaces.Repositories;
 using Grocery.Core.Models;
@@ -18,6 +19,7 @@ namespace Grocery.Core.Data.Repositories
                 {
                     Role = Role.Admin
                 }
+                new Client(3, "A.J. Kwak", "user3@mail.com", "sxnIcZdYt8wC8MYWcQVQjQ==.FKd5Z/jwxPv3a63lX+uvQ0+P7EuNYZybvkmdhbnkIHA=", Role.Admin)
             ];
         }
 

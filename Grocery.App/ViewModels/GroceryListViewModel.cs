@@ -23,6 +23,7 @@ namespace Grocery.App.ViewModels
             _groceryListService = groceryListService;
             _global = globalViewModel;
             GroceryLists = new(_groceryListService.GetAll());
+            Client = _global.Client;
         }
 
         [RelayCommand]
@@ -32,11 +33,21 @@ namespace Grocery.App.ViewModels
             await Shell.Current.GoToAsync($"{nameof(Views.GroceryListItemsView)}?Titel={groceryList.Name}", true, paramater);
         }
 
+        [RelayCommand]
+        public async Task ShowBoughtProducts()
+        {
+            if (_global.Client?.Role == Role.Admin)
+            {
+                await Shell.Current.GoToAsync(nameof(Views.BoughtProductsView));
+            }
+        }
+
         public override void OnAppearing()
         {
             base.OnAppearing();
             Client = _global.Client;
             GroceryLists = new(_groceryListService.GetAll());
+            Client = _global.Client;
         }
 
         public override void OnDisappearing()
